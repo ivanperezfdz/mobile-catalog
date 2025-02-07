@@ -1,0 +1,76 @@
+{
+  "common": {
+    "results": "{{count}} Results",
+    "from": "From",
+    "add": "Add",
+    "remove": "Remove",
+    "removing": "Removing...",
+    "back": "Back",
+    "specifications": "Specifications",
+    "similarItems": "Similar Items",
+    "cart": "Cart",
+    "continueShopping": "Continue Shopping",
+    "pay": "Pay",
+    "total": "Total",
+    "backToHome": "Back to Home",
+    "error": "Error"
+  },
+  "error": {
+    "DEFAULT": {
+      "title": "Oops! Something went wrong",
+      "message": "An unexpected error occurred. Please try again later."
+    },
+    "NETWORK_ERROR": {
+      "title": "Connection error",
+      "message": "Could not connect to the server. Please check your internet connection."
+    },
+    "PHONE_NOT_FOUND": {
+      "title": "Phone not found",
+      "message": "The phone you are looking for was not found. It may no longer be available."
+    },
+    "PHONE_DETAILS_FAILED": {
+      "title": "Error loading details",
+      "message": "Could not load phone details. Please try again."
+    },
+    "PHONE_LIST_FAILED": {
+      "title": "Error loading phones",
+      "message": "Could not load the phone list. Please try again."
+    },
+    "PHONE_SEARCH_FAILED": {
+      "title": "Search error",
+      "message": "Could not complete the search. Please try again."
+    },
+    "CART_ADD_FAILED": {
+      "title": "Error adding to cart",
+      "message": "Could not add the product to cart. Please try again."
+    },
+    "CART_REMOVE_FAILED": {
+      "title": "Error removing from cart",
+      "message": "Could not remove the product from cart. Please try again."
+    },
+    "CART_LOAD_FAILED": {
+      "title": "Error loading cart",
+      "message": "Could not load the cart. Please refresh the page."
+    }
+  },
+  "home": {
+    "search": "Search for a smartphone..."
+  },
+  "detail": {
+    "storageQuestion": "Storage, How much space do you need?",
+    "colorQuestion": "Color. Pick your favourite",
+    "brand": "Brand",
+    "name": "Name",
+    "description": "Description",
+    "addingToCart": "Adding...",
+    "addToCart": "Add to Cart",
+    "screen": "Screen",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "mainCamera": "Main Camera",
+    "selfieCamera": "Selfie Camera",
+    "battery": "Battery",
+    "os": "Operating System",
+    "screenRefreshRate": "Screen Refresh Rate"
+  }
+}

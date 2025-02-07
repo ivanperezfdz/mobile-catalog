@@ -1,0 +1,16 @@
+export const translations: Record<string, string> = {
+  'common.results': '{{count}} Results',
+  'common.from': 'From',
+  'common.add': 'Add',
+  'common.remove': 'Remove',
+  'home.search': 'Search for a smartphone...',
+  'detail.addToCart': 'Add to Cart',
+  'detail.storageQuestion': 'Storage, How much space do you need?',
+  'detail.colorQuestion': 'Color. Pick your favourite',
+  'detail.brand': 'Brand',
+  'detail.name': 'Name',
+  'detail.description': 'Description',
+  'detail.addingToCart': 'Adding...',
+  'error.DEFAULT.title': 'Oops! Something went wrong',
+  'error.DEFAULT.message': 'An unexpected error occurred',
+};

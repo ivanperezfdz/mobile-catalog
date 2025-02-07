@@ -1,0 +1,76 @@
+{
+  "common": {
+    "results": "{{count}} Resultados",
+    "from": "Desde",
+    "add": "Añadir",
+    "remove": "Eliminar",
+    "removing": "Eliminando...",
+    "back": "Atrás",
+    "specifications": "Especificaciones",
+    "similarItems": "Artículos Similares",
+    "cart": "Carrito",
+    "continueShopping": "Continuar Comprando",
+    "pay": "Pagar",
+    "total": "Total",
+    "backToHome": "Volver al inicio",
+    "error": "Error"
+  },
+  "error": {
+    "DEFAULT": {
+      "title": "¡Ups! Algo salió mal",
+      "message": "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde."
+    },
+    "NETWORK_ERROR": {
+      "title": "Error de conexión",
+      "message": "No se pudo conectar con el servidor. Por favor, verifica tu conexión a internet."
+    },
+    "PHONE_NOT_FOUND": {
+      "title": "Teléfono no encontrado",
+      "message": "No se encontró el teléfono que estás buscando. Es posible que ya no esté disponible."
+    },
+    "PHONE_DETAILS_FAILED": {
+      "title": "Error al cargar los detalles",
+      "message": "No se pudieron cargar los detalles del teléfono. Por favor, inténtalo de nuevo."
+    },
+    "PHONE_LIST_FAILED": {
+      "title": "Error al cargar los teléfonos",
+      "message": "No se pudo cargar el listado de teléfonos. Por favor, inténtalo de nuevo."
+    },
+    "PHONE_SEARCH_FAILED": {
+      "title": "Error en la búsqueda",
+      "message": "No se pudo completar la búsqueda. Por favor, inténtalo de nuevo."
+    },
+    "CART_ADD_FAILED": {
+      "title": "Error al añadir al carrito",
+      "message": "No se pudo añadir el producto al carrito. Por favor, inténtalo de nuevo."
+    },
+    "CART_REMOVE_FAILED": {
+      "title": "Error al eliminar del carrito",
+      "message": "No se pudo eliminar el producto del carrito. Por favor, inténtalo de nuevo."
+    },
+    "CART_LOAD_FAILED": {
+      "title": "Error al cargar el carrito",
+      "message": "No se pudo cargar el carrito. Por favor, actualiza la página."
+    }
+  },
+  "home": {
+    "search": "Busca un smartphone..."
+  },
+  "detail": {
+    "storageQuestion": "Almacenamiento, ¿Cuánto espacio necesitas?",
+    "colorQuestion": "Color. Elige tu favorito",
+    "brand": "Marca",
+    "name": "Nombre",
+    "description": "Descripción",
+    "addingToCart": "Añadiendo...",
+    "addToCart": "Añadir al carrito",
+    "screen": "Pantalla",
+    "resolution": "Resolución",
+    "processor": "Procesador",
+    "mainCamera": "Cámara Principal",
+    "selfieCamera": "Cámara Selfie",
+    "battery": "Batería",
+    "os": "Sistema Operativo",
+    "screenRefreshRate": "Tasa de Refresco de Pantalla"
+  }
+}
