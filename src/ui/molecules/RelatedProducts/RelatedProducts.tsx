@@ -1,18 +1,16 @@
-import { Text } from '@/ui/atoms/Text/Text.styles';
-import type { ProductListItem } from '@/domain/phones/entities/Phone';
 import { ProductCard } from '@/ui/organisms/ProductCard/ProductCard';
+import type { RelatedProductsProps } from './RelatedProducts.types';
+import { Text } from '@/ui/atoms/Text/Text.styles';
 import { useRef, useState, useEffect, useMemo } from 'react';
+import { useTranslation } from '@/ui/hooks/useTranslation';
 import * as S from './RelatedProducts.styles';
-
-type RelatedProductsProps = {
-  products: ProductListItem[];
-};
 
 export const RelatedProducts = ({ products }: RelatedProductsProps) => {
   const gridRef = useRef<HTMLDivElement>(null);
   const thumbRef = useRef<HTMLDivElement>(null);
   const [thumbWidth, setThumbWidth] = useState(20);
   const [thumbLeft, setThumbLeft] = useState(0);
+  const { t } = useTranslation();
 
   const productsWithoutRepeated = useMemo(() => {
     return products.filter(
@@ -57,7 +55,7 @@ export const RelatedProducts = ({ products }: RelatedProductsProps) => {
   return (
     <S.Container>
       <Text size="lg" transform="uppercase">
-        Similar Items
+        {t('common.similarItems')}
       </Text>
       <S.GridWrapper>
         <S.Grid ref={gridRef}>

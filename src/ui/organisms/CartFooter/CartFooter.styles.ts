@@ -8,6 +8,7 @@ export const Footer = styled.footer`
   right: 0;
   background: ${({ theme }) => theme.colors.background};
   display: grid;
+  gap: ${({ theme }) => theme.spacing.xl};
   align-items: center;
   width: 100%;
   max-width: 100vw;
@@ -39,7 +40,6 @@ export const TotalContainer = styled(SectionContainer).attrs({
 })`
   grid-area: total;
   justify-content: space-between;
-  margin-bottom: ${({ theme }) => theme.spacing['2xl']};
 
   ${({ theme }) => theme.mediaQueries.lg} {
     justify-content: flex-end;
@@ -58,6 +58,7 @@ export const ContinueButtonWrapper = styled.div`
 
 export const PayButtonWrapper = styled.div`
   grid-area: pay;
+  text-align: right;
   ${({ theme }) => theme.mediaQueries.lg} {
     grid-area: unset;
   }

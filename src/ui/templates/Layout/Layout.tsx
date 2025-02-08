@@ -6,7 +6,7 @@ import { useTranslation } from '@/ui/hooks/useTranslation';
 import * as S from './Layout.styles';
 import type { LayoutProps } from './Layout.types';
 
-export const Layout = ({ children, showCart = true }: LayoutProps) => {
+export const Layout = ({ children }: LayoutProps) => {
   const { loadCart, cart, loading: loadingCart } = useCart();
   const { loading: loadingPhones } = usePhones();
   const { currentLanguage, changeLanguage } = useTranslation();
@@ -21,7 +21,6 @@ export const Layout = ({ children, showCart = true }: LayoutProps) => {
         cartItemsCount={cart.items.length}
         currentLanguage={currentLanguage}
         onLanguageChange={changeLanguage}
-        showCart={showCart}
         loading={loadingCart || loadingPhones}
       />
       <S.Main>{children}</S.Main>

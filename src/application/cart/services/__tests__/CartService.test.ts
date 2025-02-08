@@ -47,10 +47,10 @@ describe('CartService', () => {
 
   describe('removeItem', () => {
     it('should remove item from cart and reload cart', async () => {
-      await cartService.removeItem('1');
+      await cartService.removeItem('1', 'Black', '128GB');
       expect(
         (cartService as any).cartRepository.removeItem
-      ).toHaveBeenCalledWith('1');
+      ).toHaveBeenCalledWith('1', 'Black', '128GB');
       expect((cartService as any).cartRepository.getCart).toHaveBeenCalled();
     });
 
@@ -59,9 +59,9 @@ describe('CartService', () => {
       mockCartRepository.removeItem.mockRejectedValue(
         new Error('Failed to remove item')
       );
-      await expect(cartService.removeItem('1')).rejects.toThrow(
-        'Failed to remove item'
-      );
+      await expect(
+        cartService.removeItem('1', 'Black', '128GB')
+      ).rejects.toThrow('Failed to remove item');
     });
   });
 

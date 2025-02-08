@@ -46,7 +46,7 @@ export const PhoneDetail = ({
 
   return (
     <>
-      <Container $maxWidth="xl">
+      <Container $maxWidth="xl" $padding={false}>
         <S.MainContent>
           <S.ImageSection>
             <ResponsiveImage
@@ -78,7 +78,7 @@ export const PhoneDetail = ({
                 $weight="regular"
                 data-testid="phone-price"
               >
-                {t('common.from')}{' '}
+                {!selectedStorageOption ? `${t('common.from')} ` : ''}
                 {selectedStorageOption?.price || phone.basePrice} EUR
               </Text>
             </SectionContainer>
@@ -102,11 +102,11 @@ export const PhoneDetail = ({
                 data-testid="add-to-cart-button"
                 disabled={!selectedColor || !selectedStorage || loading}
                 onClick={handleAddToCart}
-                $$fullWidth
+                $fullWidth
                 $variant="primary"
-                size="large"
+                size="medium"
               >
-                <Text transform="uppercase" $weight="light" color="white">
+                <Text transform="uppercase" size="xs" color="white">
                   {loading ? t('detail.addingToCart') : t('detail.addToCart')}
                 </Text>
               </Button>

@@ -1,18 +1,9 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { CartItem } from '../CartItem';
 import { renderWithProviders } from '@/test/utils/renderWithProviders';
+import { mockCartItem as mockItem } from '@/test/mocks/data/cart.mock';
 
 describe('CartItem', () => {
-  const mockItem = {
-    phoneId: '1',
-    name: 'Test Phone',
-    colorName: 'Black',
-    storageCapacity: '128GB',
-    price: 999,
-    imageUrl: '/test.jpg',
-    quantity: 1,
-  };
-
   const defaultProps = {
     item: mockItem,
     onRemove: jest.fn(),
@@ -34,7 +25,11 @@ describe('CartItem', () => {
     await renderWithProviders(<CartItem {...defaultProps} />);
 
     fireEvent.click(screen.getByTestId('remove-item-button'));
-    expect(defaultProps.onRemove).toHaveBeenCalledWith(mockItem.phoneId);
+    expect(defaultProps.onRemove).toHaveBeenCalledWith(
+      mockItem.phoneId,
+      mockItem.colorName,
+      mockItem.storageCapacity
+    );
   });
 
   it('should show loading state', async () => {

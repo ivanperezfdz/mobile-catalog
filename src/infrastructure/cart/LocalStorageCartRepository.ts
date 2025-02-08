@@ -23,7 +23,12 @@ export class LocalStorageCartRepository implements CartRepository {
 
   async addItem(item: CartItem): Promise<void> {
     const cart = await this.getCart();
-    const existingItem = cart.items.find((i) => i.phoneId === item.phoneId);
+    const existingItem = cart.items.find(
+      (i) =>
+        i.phoneId === item.phoneId &&
+        i.colorName === item.colorName &&
+        i.storageCapacity === item.storageCapacity
+    );
 
     if (existingItem) {
       existingItem.quantity += item.quantity;
@@ -35,11 +40,29 @@ export class LocalStorageCartRepository implements CartRepository {
     localStorage.setItem(this.CART_KEY, JSON.stringify(cart));
   }
 
-  async removeItem(phoneId: string): Promise<void> {
+  async removeItem(
+    phoneId: string,
+    colorName: string,
+    storageCapacity: string
+  ): Promise<void> {
     const cart = await this.getCart();
-    cart.items = cart.items.filter((item) => item.phoneId !== phoneId);
-    cart.total = this.calculateTotal(cart.items);
-    localStorage.setItem(this.CART_KEY, JSON.stringify(cart));
+    const itemIndex = cart.items.findIndex(
+      (item) =>
+        item.phoneId === phoneId &&
+        item.colorName === colorName &&
+        item.storageCapacity === storageCapacity
+    );
+
+    if (itemIndex !== -1) {
+      const item = cart.items[itemIndex];
+      if (item.quantity > 1) {
+        item.quantity -= 1;
+      } else {
+        cart.items.splice(itemIndex, 1);
+      }
+      cart.total = this.calculateTotal(cart.items);
+      localStorage.setItem(this.CART_KEY, JSON.stringify(cart));
+    }
   }
 
   private calculateTotal(items: CartItem[]): number {

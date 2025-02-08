@@ -25,6 +25,10 @@ export const Container = styled.div<ContainerProps>`
     width: 100%;
     max-width: ${getMaxWidth($maxWidth)};
     margin: 0 auto;
-    padding: ${padding ? ({ theme }) => theme.spacing['3xl'] : 0};
+    padding: ${padding ? ({ theme }) => theme.spacing.xl : 0};
+
+    ${({ theme }) => theme.mediaQueries.lg} {
+      padding: ${padding ? ({ theme }) => theme.spacing['3xl'] : 0};
+    }
   `}
 `;

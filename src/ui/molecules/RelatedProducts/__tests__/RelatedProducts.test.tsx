@@ -11,7 +11,7 @@ describe('RelatedProducts', () => {
   it('should render related products correctly', async () => {
     await renderWithProviders(<RelatedProducts {...defaultProps} />);
 
-    expect(screen.getByText('Similar Items')).toBeInTheDocument();
+    expect(screen.getByText('common.similarItems')).toBeInTheDocument();
     mockPhones.forEach((product) => {
       expect(screen.getByText(product.name)).toBeInTheDocument();
       expect(screen.getByText(`${product.basePrice} EUR`)).toBeInTheDocument();

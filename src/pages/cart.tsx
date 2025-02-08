@@ -21,7 +21,7 @@ const CartPage = () => {
   };
 
   return (
-    <Container $maxWidth="xl">
+    <Container $maxWidth="xl" $padding={false}>
       <SectionContainer
         direction="column"
         $gap="4xl"

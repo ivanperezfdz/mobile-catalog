@@ -1,14 +1,14 @@
 import { Button } from '@/ui/atoms/Button/Button.styles';
-import type { ErrorCode } from '@/ui/hooks/useErrorHandler';
 import { ErrorMessage } from '@/ui/atoms/ErrorMessage/ErrorMessage';
 import { useRouter } from 'next/router';
 import { useTranslation } from '@/ui/hooks/useTranslation';
+import { ErrorCode } from '@/utils/error/Error.types';
 
 export default function ErrorPage() {
   const router = useRouter();
   const { t } = useTranslation();
   const { code } = router.query;
-  const errorCode = (code as ErrorCode) || 'DEFAULT';
+  const errorCode = (code as ErrorCode) || ErrorCode.DEFAULT;
 
   return (
     <ErrorMessage

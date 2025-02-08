@@ -13,10 +13,11 @@ export const CartFooter = ({ total, onContinue, onPay }: CartFooterProps) => {
         <Button
           $variant="secondary"
           onClick={onContinue}
-          size="large"
-          $$fullWidth
+          size="medium"
+          $fullWidth
+          $inline
         >
-          <Text size="sm" transform="uppercase">
+          <Text size="xs" transform="uppercase">
             {t('common.continueShopping')}
           </Text>
         </Button>
@@ -25,17 +26,23 @@ export const CartFooter = ({ total, onContinue, onPay }: CartFooterProps) => {
       {total > 0 && (
         <>
           <S.TotalContainer>
-            <Text size="sm" transform="uppercase">
+            <Text size="sm" transform="uppercase" $weight="medium">
               {t('common.total')}
             </Text>
-            <Text size="sm" transform="uppercase">
+            <Text size="sm" transform="uppercase" $weight="medium">
               {total} EUR
             </Text>
           </S.TotalContainer>
 
           <S.PayButtonWrapper>
-            <Button $variant="primary" onClick={onPay} size="large" $$fullWidth>
-              <Text size="sm" transform="uppercase" color="white">
+            <Button
+              $variant="primary"
+              onClick={onPay}
+              size="medium"
+              $fullWidth
+              $inline
+            >
+              <Text size="xs" transform="uppercase" color="white">
                 {t('common.pay')}
               </Text>
             </Button>

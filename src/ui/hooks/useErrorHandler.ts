@@ -1,23 +1,7 @@
-import { useRouter } from 'next/router';
+import { AppError } from '@/utils/error/Error';
+import { ErrorCode } from '@/utils/error/Error.types';
 import { useCallback } from 'react';
-
-export type ErrorCode =
-  | 'PHONE_NOT_FOUND'
-  | 'PHONE_DETAILS_FAILED'
-  | 'PHONE_LIST_FAILED'
-  | 'PHONE_SEARCH_FAILED'
-  | 'CART_ADD_FAILED'
-  | 'CART_REMOVE_FAILED'
-  | 'CART_LOAD_FAILED'
-  | 'NETWORK_ERROR'
-  | 'DEFAULT';
-
-export class AppError extends Error {
-  constructor(public code: ErrorCode) {
-    super(code);
-    this.name = 'AppError';
-  }
-}
+import { useRouter } from 'next/router';
 
 export const useErrorHandler = () => {
   const router = useRouter();
@@ -33,12 +17,12 @@ export const useErrorHandler = () => {
           error.message.includes('Failed to fetch') ||
           error.message.includes('Network Error')
         ) {
-          appError = new AppError('NETWORK_ERROR');
+          appError = new AppError(ErrorCode.NETWORK_ERROR);
         } else {
-          appError = new AppError('DEFAULT');
+          appError = new AppError(ErrorCode.DEFAULT);
         }
       } else {
-        appError = new AppError('DEFAULT');
+        appError = new AppError(ErrorCode.DEFAULT);
       }
 
       void router.push({

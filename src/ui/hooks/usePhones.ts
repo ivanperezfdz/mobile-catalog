@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PhoneContext } from '../context/PhoneContext';
+import { PhoneContext } from '../context/PhoneContext/PhoneContext';
 
 export const usePhones = () => {
   const context = useContext(PhoneContext);

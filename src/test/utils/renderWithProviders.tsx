@@ -1,9 +1,9 @@
 import { render, act } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@/ui/styles/theme';
-import { TranslationProvider } from '@/ui/context/TranslationContext';
-import { PhoneProvider } from '@/ui/context/PhoneContext';
-import { CartProvider } from '@/ui/context/CartContext';
+import { TranslationProvider } from '@/ui/context/TranslationContext/TranslationContext';
+import { PhoneProvider } from '@/ui/context/PhoneContext/PhoneContext';
+import { CartProvider } from '@/ui/context/CartContext/CartContext';
 import {
   createMockTranslationService,
   createMockPhoneService,
