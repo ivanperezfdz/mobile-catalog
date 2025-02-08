@@ -1,4 +1,4 @@
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { SearchInput } from '../SearchInput';
 import { renderWithProviders } from '@/test/utils/renderWithProviders';
 
@@ -41,7 +41,9 @@ describe('SearchInput', () => {
 
     expect(defaultProps.onSearch).toHaveBeenCalledTimes(1);
 
-    jest.advanceTimersByTime(500);
+    await act(async () => {
+      jest.advanceTimersByTime(500);
+    });
 
     await waitFor(() => {
       expect(defaultProps.onSearch).toHaveBeenCalledTimes(2);

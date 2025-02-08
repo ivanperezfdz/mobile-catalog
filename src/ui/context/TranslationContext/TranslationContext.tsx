@@ -1,21 +1,15 @@
-import { createContext, useCallback, useEffect, useState } from 'react';
-import type { TranslationService } from '@/application/translation/services/TranslationService';
 import type {
   Language,
   TranslationOptions,
 } from '@/domain/translation/entities/Translation';
+import type { TranslationService } from '@/application/translation/services/TranslationService';
+import { createContext, useCallback, useEffect, useState } from 'react';
 import { DEFAULT_LANGUAGE } from '@/domain/translation/entities/Translation';
-
-const LANGUAGE_KEY = 'app_language';
-
-type TranslationContextType = {
-  translate: (key: string, options?: TranslationOptions) => string;
-  changeLanguage: (language: Language) => void;
-  currentLanguage: Language;
-};
+import type { TranslationContextProps } from './TranslationContext.types';
+import { LANGUAGE_KEY } from './TranslationContext.types';
 
 export const TranslationContext = createContext<
-  TranslationContextType | undefined
+  TranslationContextProps | undefined
 >(undefined);
 
 export const TranslationProvider: React.FC<{

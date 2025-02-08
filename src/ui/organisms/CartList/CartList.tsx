@@ -7,7 +7,7 @@ export const CartList = ({ items, onRemoveItem, loading }: CartListProps) => {
     <S.Container>
       {items.map((item, index) => (
         <CartItem
-          key={item.phoneId}
+          key={`${item.phoneId}-${item.colorName}-${item.storageCapacity}`}
           item={item}
           onRemove={onRemoveItem}
           loading={loading}

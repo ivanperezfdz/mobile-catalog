@@ -1,12 +1,6 @@
+import * as S from './ResponsiveImage.styles';
 import Image from 'next/image';
-import styled from 'styled-components';
 import type { ResponsiveImageProps } from './ResponsiveImage.types';
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;
 
 export const ResponsiveImage = ({
   containerClassName,
@@ -20,7 +14,7 @@ export const ResponsiveImage = ({
     : undefined;
 
   return (
-    <ImageContainer className={containerClassName}>
+    <S.ImageContainer className={containerClassName}>
       <Image
         {...props}
         sizes={customSizes || defaultSizes}
@@ -28,6 +22,6 @@ export const ResponsiveImage = ({
         priority={isLCP}
         data-priority={isLCP}
       />
-    </ImageContainer>
+    </S.ImageContainer>
   );
 };

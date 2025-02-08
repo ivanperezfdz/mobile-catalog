@@ -1,20 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { ReactNode } from 'react';
+import { AppError } from '@/utils/error/Error';
+import type { CartContextProps } from './CartContext.types';
 import { createContext, useCallback, useState } from 'react';
-import type { CartService } from '@/application/cart/services/CartService';
+import { ErrorCode } from '@/utils/error/Error.types';
+import { useErrorHandler } from '../../hooks/useErrorHandler';
 import type { Cart, CartItem } from '@/domain/cart/entities/Cart';
-import { useErrorHandler } from '../hooks/useErrorHandler';
-import { AppError } from '../hooks/useErrorHandler';
+import type { CartService } from '@/application/cart/services/CartService';
+import type { ReactNode } from 'react';
 
-type CartContextType = {
-  cart: Cart;
-  loading: boolean;
-  addItem: (item: CartItem) => Promise<void>;
-  removeItem: (phoneId: string) => Promise<void>;
-  loadCart: () => Promise<void>;
-};
-
-export const CartContext = createContext<CartContextType | undefined>(
+export const CartContext = createContext<CartContextProps | undefined>(
   undefined
 );
 
@@ -35,7 +29,7 @@ export const CartProvider = ({
       const data = await cartService.getCart();
       setCart(data);
     } catch (_error) {
-      handleError(new AppError('CART_LOAD_FAILED'));
+      handleError(new AppError(ErrorCode.CART_LOAD_FAILED));
     } finally {
       setLoading(false);
     }
@@ -48,7 +42,7 @@ export const CartProvider = ({
         await cartService.addItem(item);
         await loadCart();
       } catch (_error) {
-        handleError(new AppError('CART_ADD_FAILED'));
+        handleError(new AppError(ErrorCode.CART_ADD_FAILED));
       } finally {
         setLoading(false);
       }
@@ -57,13 +51,13 @@ export const CartProvider = ({
   );
 
   const removeItem = useCallback(
-    async (phoneId: string) => {
+    async (phoneId: string, colorName: string, storageCapacity: string) => {
       try {
         setLoading(true);
-        await cartService.removeItem(phoneId);
+        await cartService.removeItem(phoneId, colorName, storageCapacity);
         await loadCart();
       } catch (_error) {
-        handleError(new AppError('CART_REMOVE_FAILED'));
+        handleError(new AppError(ErrorCode.CART_REMOVE_FAILED));
       } finally {
         setLoading(false);
       }

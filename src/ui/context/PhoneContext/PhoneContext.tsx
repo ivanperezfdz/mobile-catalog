@@ -1,20 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import type { ReactNode } from 'react';
+import { AppError } from '@/utils/error/Error';
 import { createContext, useCallback, useState } from 'react';
+import { ErrorCode } from '@/utils/error/Error.types';
+import type { PhoneContextProps } from './PhoneContext.types';
+import { useErrorHandler } from '../../hooks/useErrorHandler';
+import type { ProductListItem } from '@/domain/phones/entities/Phone';
 import type { PhoneService } from '@/application/phones/services/PhoneService';
-import type { Phone, ProductListItem } from '@/domain/phones/entities/Phone';
-import { useErrorHandler } from '../hooks/useErrorHandler';
-import { AppError } from '../hooks/useErrorHandler';
+import type { ReactNode } from 'react';
 
-type PhoneContextType = {
-  phones: ProductListItem[];
-  loading: boolean;
-  loadPhones: (page: number) => Promise<void>;
-  searchPhones: (query: string) => Promise<void>;
-  getPhoneDetail: (id: string) => Promise<Phone | null>;
-};
-
-export const PhoneContext = createContext<PhoneContextType | undefined>(
+export const PhoneContext = createContext<PhoneContextProps | undefined>(
   undefined
 );
 
@@ -36,7 +30,7 @@ export const PhoneProvider = ({
         const result = await phoneService.getPhones(page);
         setPhones(result);
       } catch (_error) {
-        handleError(new AppError('PHONE_LIST_FAILED'));
+        handleError(new AppError(ErrorCode.PHONE_LIST_FAILED));
       } finally {
         setLoading(false);
       }
@@ -51,7 +45,7 @@ export const PhoneProvider = ({
         const result = await phoneService.searchPhones(query);
         setPhones(result);
       } catch (_error) {
-        handleError(new AppError('PHONE_SEARCH_FAILED'));
+        handleError(new AppError(ErrorCode.PHONE_SEARCH_FAILED));
       } finally {
         setLoading(false);
       }
@@ -64,14 +58,14 @@ export const PhoneProvider = ({
       try {
         const phone = await phoneService.getPhoneDetail(id);
         if (!phone) {
-          throw new AppError('PHONE_NOT_FOUND');
+          throw new AppError(ErrorCode.PHONE_NOT_FOUND);
         }
         return phone;
       } catch (error) {
         if (error instanceof AppError) {
           handleError(error);
         } else {
-          handleError(new AppError('PHONE_DETAILS_FAILED'));
+          handleError(new AppError(ErrorCode.PHONE_DETAILS_FAILED));
         }
         return null;
       }

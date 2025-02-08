@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TranslationContext } from '../context/TranslationContext';
+import { TranslationContext } from '../context/TranslationContext/TranslationContext';
 import type {
   Language,
   TranslationOptions,

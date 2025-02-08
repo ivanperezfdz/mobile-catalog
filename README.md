@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Arquitectura y Estructura del Proyecto
 
-## Getting Started
+Este proyecto está estructurado de la siguiente manera:
 
-First, run the development server:
+- `.env.development` y `.env.production`: Archivos de configuración de entorno para desarrollo y producción.
+- `.github/`: Contiene flujos de trabajo de GitHub Actions.
+- `.husky/`: Configuración de Husky para pre-commit hooks.
+- `cypress/`: Pruebas end-to-end con Cypress.
+- `public/`: Archivos estáticos públicos, aquí se incluye la fuente Helvetica Neue para un mejor uso de los weights en las fuentes.
+- `src/`: Código fuente de la aplicación.
+  - `pages/`: Páginas de Next.js. Punto de entrada \_app.tsx.
+  - `ui/`: Se incluye lo relacionado con las vistas y componentes de la aplicación, siguiendo Atomic Design. Se incluyen también los contextos, hooks y estilos del tema utilizado.
+  - `application/, domain/, infrastructure/`: Se sigue una arquitectura hexagonal para los teléfonos, carrito y traducciones.
+- `package.json`: Dependencias y scripts del proyecto.
+- `tsconfig.json`: Configuración de TypeScript.
+
+## Arquitectura Hexagonal
+
+Se implementa en este proyecto para separar las preocupaciones y facilitar la mantenibilidad y escalabilidad del código. La estructura principal incluye:
+
+- **Dominios**: Contiene la lógica de negocio central de la aplicación.
+- **Aplicación**: Maneja la lógica de la aplicación, incluyendo casos de uso / puertos y servicios.
+- **Infraestructura**: Contiene implementaciones específicas de la infraestructura, en este caso la conexión a la API, el LocalStorage e i18n.
+- **UI / Interfaces**: Define las interfaces de usuario y otros puntos de entrada/salida de la aplicación.
+
+## Configuración de ESLint y Prettier
+
+Este proyecto utiliza ESLint y Prettier para asegurar un código limpio y consistente.
+
+## Ejecución de la aplicación
+
+Para ejecutar la aplicación en modo de desarrollo, se debe ejecutar el siguiente comando:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para construir la aplicación en modo de producción, se debe ejecutar el siguiente comando:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para ejecutar la aplicación en modo de producción, se debe ejecutar el siguiente comando:
 
-## Learn More
+```bash
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Pruebas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Para ejecutar las pruebas unitarias, se debe ejecutar el siguiente comando:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run test
+```
 
-## Deploy on Vercel
+Para ejecutar las pruebas end-to-end, se debe ejecutar el siguiente comando (es importante recordar que se debe tener la aplicación en ejecución):
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run test:e2e
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Despliegue
+
+El despliegue de la aplicación se realiza automáticamente a través de GitHub Actions. Se despliega en Vercel y se puede acceder a través de la siguiente URL: [https://mobile-catalog.vercel.app/](https://mobile-catalog.vercel.app/).
+
+## Autor
+
+- [Iván Pérez Fernández](https://www.linkedin.com/in/ivanperezfdz)
+
+```
+
+```

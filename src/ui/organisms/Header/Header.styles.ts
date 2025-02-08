@@ -11,8 +11,12 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${({ theme }) => `${theme.spacing.lg} ${theme.spacing['3xl']}`};
+  padding: ${({ theme }) => `${theme.spacing.lg} ${theme.spacing.xl}`};
   background-color: ${({ theme }) => theme.colors.background};
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    padding: ${({ theme }) => `${theme.spacing.lg} ${theme.spacing['3xl']}`};
+  }
 `;
 
 export const Logo = styled(Text)`

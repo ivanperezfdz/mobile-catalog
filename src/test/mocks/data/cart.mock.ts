@@ -7,7 +7,7 @@ export const mockCartItem: CartItem = {
   storageCapacity: '128GB',
   quantity: 1,
   price: 999,
-  imageUrl: 'test.jpg',
+  imageUrl: '/placeholder.svg',
 };
 
 export const mockCart: Cart = {

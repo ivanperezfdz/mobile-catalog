@@ -5,7 +5,7 @@ export const sizes = {
   topBarDetailHeight: '44px',
   colorOptionSize: '28px',
   cartImages: {
-    small: '120px',
+    small: '160px',
     medium: '200px',
   },
 } as const;

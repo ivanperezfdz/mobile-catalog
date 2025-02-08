@@ -1,4 +1,5 @@
 export const breakpoints = {
+  xs: '375px',
   sm: '640px',
   md: '768px',
   lg: '1024px',
@@ -7,6 +8,7 @@ export const breakpoints = {
 };
 
 export const mediaQueries = {
+  xs: `@media (min-width: ${breakpoints.xs})`,
   sm: `@media (min-width: ${breakpoints.sm})`,
   md: `@media (min-width: ${breakpoints.md})`,
   lg: `@media (min-width: ${breakpoints.lg})`,

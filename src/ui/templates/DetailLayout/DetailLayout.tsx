@@ -20,7 +20,7 @@ export const DetailLayout = ({ children, onBack }: DetailLayoutProps) => {
   return (
     <>
       <S.Header>
-        <Button onClick={handleBack} $variant="default">
+        <Button onClick={handleBack} $variant="default" size="default">
           <SectionContainer $gap="sm">
             <ChevronLeft size={16} />
             <Text

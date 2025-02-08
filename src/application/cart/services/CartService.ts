@@ -19,8 +19,12 @@ export class CartService implements CartServicePort {
     await this.loadCart();
   }
 
-  async removeItem(phoneId: string): Promise<void> {
-    await this.cartRepository.removeItem(phoneId);
+  async removeItem(
+    phoneId: string,
+    colorName: string,
+    storageCapacity: string
+  ): Promise<void> {
+    await this.cartRepository.removeItem(phoneId, colorName, storageCapacity);
     await this.loadCart();
   }
 

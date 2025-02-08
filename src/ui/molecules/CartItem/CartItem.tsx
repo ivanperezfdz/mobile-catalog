@@ -1,10 +1,10 @@
 import { Button } from '@/ui/atoms/Button/Button.styles';
-import type { CartItemProps } from './CartItem.types';
 import { ResponsiveImage } from '@/ui/atoms/ResponsiveImage/ResponsiveImage';
 import { SectionContainer } from '@/ui/atoms/SectionContainer/SectionContainer.styles';
 import { Text } from '@/ui/atoms/Text/Text.styles';
 import { useTranslation } from '@/ui/hooks/useTranslation';
 import * as S from './CartItem.styles';
+import type { CartItemProps } from './CartItem.types';
 
 export const CartItem = ({
   item,
@@ -28,14 +28,15 @@ export const CartItem = ({
       <S.InfoSectionContainer direction="column" $gap="xl">
         <SectionContainer direction="column" $gap="xl">
           <SectionContainer direction="column" $gap="sm">
-            <Text transform="uppercase" size="sm">
+            <Text transform="uppercase" size="xs">
               {item.name}
             </Text>
-            <Text transform="uppercase" size="sm">
+            <Text transform="uppercase" size="xs">
               {item.storageCapacity} | {item.colorName}
             </Text>
           </SectionContainer>
-          <Text transform="uppercase" size="sm">
+          <Text transform="uppercase" size="xs">
+            {item.quantity > 1 ? `${item.quantity} x ` : ''}
             {item.price} EUR
           </Text>
         </SectionContainer>
@@ -43,7 +44,10 @@ export const CartItem = ({
         <Button
           data-testid="remove-item-button"
           $variant="default"
-          onClick={() => onRemove(item.phoneId)}
+          size="default"
+          onClick={() =>
+            onRemove(item.phoneId, item.colorName, item.storageCapacity)
+          }
           disabled={loading}
         >
           <Text color="error" size="sm">

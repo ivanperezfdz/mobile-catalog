@@ -1,15 +1,26 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { Header } from '../Header';
 import { renderWithProviders } from '@/test/utils/renderWithProviders';
+import { useRouter } from 'next/router';
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
 
 describe('Header', () => {
   const defaultProps = {
     cartItemsCount: 2,
     currentLanguage: 'es',
     onLanguageChange: jest.fn(),
-    showCart: true,
     loading: false,
   };
+
+  beforeEach(() => {
+    (useRouter as jest.Mock).mockReturnValue({
+      pathname: '/',
+      push: jest.fn(),
+    });
+  });
 
   it('should render header correctly', async () => {
     await renderWithProviders(<Header {...defaultProps} />);
@@ -33,7 +44,12 @@ describe('Header', () => {
   });
 
   it('should hide cart when showCart is false', async () => {
-    await renderWithProviders(<Header {...defaultProps} showCart={false} />);
+    (useRouter as jest.Mock).mockReturnValue({
+      pathname: '/cart',
+      push: jest.fn(),
+    });
+
+    await renderWithProviders(<Header {...defaultProps} />);
     expect(
       screen.queryByRole('link', { name: /shopping cart/i })
     ).not.toBeInTheDocument();

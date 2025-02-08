@@ -1,18 +1,20 @@
-import type { HeaderProps } from './Header.types';
+import { ResponsiveImage } from '@/ui/atoms/ResponsiveImage/ResponsiveImage';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import * as S from './Header.styles';
 import BagIcon from '@/ui/styles/icons/bag-icon.svg';
-import { ResponsiveImage } from '@/ui/atoms/ResponsiveImage/ResponsiveImage';
 import Link from 'next/link';
+import type { HeaderProps } from './Header.types';
 
 export const Header = ({
   cartItemsCount = 0,
   currentLanguage,
   onLanguageChange,
-  showCart = true,
   loading,
 }: HeaderProps) => {
   const [showLoadingBar, setShowLoadingBar] = useState<boolean>(false);
+  const router = useRouter();
+  const showCart = !router.pathname.includes('/cart');
 
   useEffect(() => {
     if (loading) {
@@ -54,7 +56,7 @@ export const Header = ({
 
         {showCart && (
           <Link href="/cart">
-            <S.CartButton $variant="default">
+            <S.CartButton $variant="default" size="default">
               <ResponsiveImage src={BagIcon} alt="Shopping cart" />
               <span>{cartItemsCount}</span>
             </S.CartButton>
