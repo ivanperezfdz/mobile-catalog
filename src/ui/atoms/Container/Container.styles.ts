@@ -21,14 +21,14 @@ const getMaxWidth = ($maxWidth: ContainerProps['$maxWidth']) => {
 };
 
 export const Container = styled.div<ContainerProps>`
-  ${({ $maxWidth = '2xl', padding = true }) => css`
+  ${({ $maxWidth = '2xl', $padding = true }) => css`
     width: 100%;
     max-width: ${getMaxWidth($maxWidth)};
     margin: 0 auto;
-    padding: ${padding ? ({ theme }) => theme.spacing.xl : 0};
+    padding: ${$padding ? ({ theme }) => theme.spacing.xl : 0};
 
     ${({ theme }) => theme.mediaQueries.lg} {
-      padding: ${padding ? ({ theme }) => theme.spacing['3xl'] : 0};
+      padding: ${$padding ? ({ theme }) => theme.spacing['3xl'] : 0};
     }
   `}
 `;
